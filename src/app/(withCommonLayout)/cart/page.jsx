@@ -33,14 +33,6 @@ const CartPage = () => {
       price: 990,
       quantity: 1,
     },
-    {
-      id: 4,
-      image:
-        "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/114-400x400.jpg",
-      name: "Apple iPhone 14 Pro Max (256 GB) - White Titanium",
-      price: 990,
-      quantity: 1,
-    },
   ]);
 
   const handleQuantityChange = (productId, change) => {
@@ -72,10 +64,8 @@ const CartPage = () => {
     return sum;
   };
 
-
   return (
     <>
-      {products < 0 && <div className="text-5xl">yes</div>}
       <div className="bg-[#f4f4f4] p-4">
         <Container>
           <div className="flex gap-2">
@@ -93,11 +83,11 @@ const CartPage = () => {
         </div>
         {products.length > 0 ? (
           <>
-            <div className="grid grid-cols-3 mt-10">
+            <div className="grid md:grid-cols-3 mt-10">
               <div className=" col-span-2">
                 <div>
-                  <table>
-                    <thead>
+                  <table className="snap-mandatory snap-x ">
+                    <thead className="snap-center">
                       <tr>
                         <th>Product</th>
                         <th></th>
@@ -107,7 +97,7 @@ const CartPage = () => {
                         <th className="w-[110px] text-start">Action</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="snap-center">
                       {products.map((product) => (
                         <tr key={product.id} className="border-t">
                           <td className="py-8 pr-8">
@@ -118,7 +108,7 @@ const CartPage = () => {
                               alt="Picture of the author"
                             ></Image>
                           </td>
-                          <td className="pr-8">{product.name}</td>
+                          <td className="pr-8 min-w-[200px]">{product.name}</td>
                           <td className="w-[110px]">
                             ${product.price.toFixed(2)}
                           </td>
@@ -177,8 +167,8 @@ const CartPage = () => {
                   </table>
                 </div>
               </div>
-              <div className="border border-blue-500 rounded-md">
-                <div className="p-8 flex flex-col justify-between h-full">
+              <div className="border border-blue-500 rounded-md w-[100%]">
+                <div className="p-8 flex flex-col w-full justify-between h-full ">
                   <div>
                     <h2>CART TOTALS</h2>
                     <div className="mt-4 flex justify-between font-semibold border-b pb-4">
@@ -187,7 +177,7 @@ const CartPage = () => {
                     </div>
                     <div className="mt-4 flex justify-between font-semibold border-b pb-4">
                       <p className="">Shipping</p>
-                      <form className="text-gray-400 font-semibold">
+                      <form className="text-gray-400 font-semibold w-full">
                         <div className="flex justify-between items-center">
                           <div>
                             <input
@@ -264,9 +254,11 @@ const CartPage = () => {
                       </p>
                     </div>
 
-                    <button className="bg-blue-500 text-white w-full py-2 font-bold rounded-sm hover:text-blue-500 outline outline-blue-500 hover:bg-white outline-1">
-                      Proceed to checkout
-                    </button>
+                    <Link href="./checkout">
+                      <button className="bg-blue-500 text-white w-full py-2 font-bold rounded-sm hover:text-blue-500 outline outline-blue-500 hover:bg-white outline-1">
+                        Proceed to checkout
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
