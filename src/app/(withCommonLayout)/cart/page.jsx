@@ -1,0 +1,293 @@
+"use client";
+
+import Link from "next/link";
+import Container from "../../../components/shared/Container/Container";
+import Image from "next/image";
+import cartIcon from "./../../../assets/icon/cart.png";
+import { useState } from "react";
+
+const CartPage = () => {
+  const [shippingCost, setShippingCost] = useState(70);
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      image:
+        "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/21-400x400.jpg",
+      name: "Apple iPhone 14 Pro Max (256 GB) - White Titanium",
+      price: 530,
+      quantity: 1,
+    },
+    {
+      id: 2,
+      image:
+        "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/17-400x400.jpg",
+      name: "Apple iPhone 14 Pro Max (256 GB) - White Titanium",
+      price: 110,
+      quantity: 4,
+    },
+    {
+      id: 3,
+      image:
+        "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/114-400x400.jpg",
+      name: "Apple iPhone 14 Pro Max (256 GB) - White Titanium",
+      price: 990,
+      quantity: 1,
+    },
+    {
+      id: 4,
+      image:
+        "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/114-400x400.jpg",
+      name: "Apple iPhone 14 Pro Max (256 GB) - White Titanium",
+      price: 990,
+      quantity: 1,
+    },
+  ]);
+
+  const handleQuantityChange = (productId, change) => {
+    const updatedProducts = products.map((product) => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          quantity: Math.max(1, product.quantity + change),
+        };
+      }
+      return product;
+    });
+    setProducts(updatedProducts);
+  };
+
+  const handleDelete = (productId) => {
+    const updatedProducts = products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(updatedProducts);
+  };
+
+  const subTotal = [];
+  const calculateTotal = () => {
+    const sum = subTotal.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+    return sum;
+  };
+
+
+  return (
+    <>
+      {products < 0 && <div className="text-5xl">yes</div>}
+      <div className="bg-[#f4f4f4] p-4">
+        <Container>
+          <div className="flex gap-2">
+            <Link className="hover:underline" href="./">
+              Home
+            </Link>
+            <div>/</div>
+            <p className="font-semibold">Shopping Cart</p>
+          </div>
+        </Container>
+      </div>
+      <Container>
+        <div className="mt-8">
+          <h1>Shopping Cart</h1>
+        </div>
+        {products.length > 0 ? (
+          <>
+            <div className="grid grid-cols-3 mt-10">
+              <div className=" col-span-2">
+                <div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th></th>
+                        <th className="w-[110px] text-start py-4">Price</th>
+                        <th className="w-[110px] text-start">Quantity</th>
+                        <th className="w-[110px] text-start">Subtotal</th>
+                        <th className="w-[110px] text-start">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {products.map((product) => (
+                        <tr key={product.id} className="border-t">
+                          <td className="py-8 pr-8">
+                            <Image
+                              src={product.image}
+                              width={100}
+                              height={10}
+                              alt="Picture of the author"
+                            ></Image>
+                          </td>
+                          <td className="pr-8">{product.name}</td>
+                          <td className="w-[110px]">
+                            ${product.price.toFixed(2)}
+                          </td>
+                          <td className="w-[110px] ">
+                            <div className="bg-gray-100 inline-block">
+                              <button
+                                className="hover:bg-gray-300 font-bold px-2 mr-1"
+                                onClick={() =>
+                                  handleQuantityChange(product.id, -1)
+                                }
+                                disabled={product.quantity <= 1}
+                              >
+                                -
+                              </button>
+                              <span className="">{product.quantity}</span>
+                              <button
+                                className="hover:bg-gray-300  px-2 ml-1"
+                                onClick={() =>
+                                  handleQuantityChange(product.id, 1)
+                                }
+                              >
+                                +
+                              </button>
+                            </div>
+                          </td>
+                          <td className="w-[110px]">
+                            ${(product.price * product.quantity).toFixed(2)}
+                            <span className="hidden">
+                              {subTotal.push({
+                                price: product.price,
+                                quantity: product.quantity,
+                              })}
+                            </span>
+                          </td>
+                          <td className="w-[110px]">
+                            <button onClick={() => handleDelete(product.id)}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="size-6"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M6 18 18 6M6 6l12 12"
+                                />
+                              </svg>
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="border border-blue-500 rounded-md">
+                <div className="p-8 flex flex-col justify-between h-full">
+                  <div>
+                    <h2>CART TOTALS</h2>
+                    <div className="mt-4 flex justify-between font-semibold border-b pb-4">
+                      <p className="">Subtotal</p>
+                      <p className="">${calculateTotal().toFixed(2)}</p>
+                    </div>
+                    <div className="mt-4 flex justify-between font-semibold border-b pb-4">
+                      <p className="">Shipping</p>
+                      <form className="text-gray-400 font-semibold">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <input
+                              type="radio"
+                              id="free_shipping"
+                              name="shipping"
+                              value="free_shipping"
+                              onClick={() => setShippingCost(0)}
+                            />
+
+                            <label
+                              className="pl-2 inline text-[16px]"
+                              htmlFor="free_shipping"
+                            >
+                              Free Shipping
+                            </label>
+                          </div>
+                          <p>0.00</p>
+                        </div>
+
+                        <div className="flex gap-6 justify-between items-center">
+                          <div>
+                            <input
+                              type="radio"
+                              id="local_pickup"
+                              name="shipping"
+                              value="local_pickup"
+                              defaultChecked
+                              onClick={() => setShippingCost(70)}
+                            />
+                            <label
+                              className="pl-2 inline text-[16px] font-sans"
+                              htmlFor="local_pickup"
+                            >
+                              Local Pickup
+                            </label>
+                          </div>
+                          <span>$70.00</span>
+                        </div>
+
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <input
+                              type="radio"
+                              id="flat_rate"
+                              name="shipping"
+                              value="flat_rate"
+                              onClick={() => setShippingCost(110)}
+                            />
+                            <label
+                              className="pl-2 inline text-[16px]  font-sans"
+                              htmlFor="flat_rate"
+                            >
+                              Flat Rate
+                            </label>
+                          </div>
+                          <span>$110.00</span>
+                        </div>
+
+                        <button
+                          className="pl-2 inline text-[16px] font-sans text-end"
+                          type="button"
+                        >
+                          Change address
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="mt-4 flex justify-between font-semibold border-b pb-4">
+                      <p className="">Total</p>
+                      <p className="">
+                        ${(calculateTotal() + shippingCost).toFixed(2)}
+                      </p>
+                    </div>
+
+                    <button className="bg-blue-500 text-white w-full py-2 font-bold rounded-sm hover:text-blue-500 outline outline-blue-500 hover:bg-white outline-1">
+                      Proceed to checkout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="h-[60vh] flex flex-col justify-center items-center">
+            <Image src={cartIcon} width={100} height={100} alt=""></Image>
+            <p className="mt-8">Your cart is currently empty.</p>
+
+            <Link
+              href="./"
+              className="w-[200px] cursor-pointer bg-blue-500 text-white mt-4 flex justify-center py-2 font-bold rounded-sm hover:text-blue-500 outline outline-blue-500 hover:bg-white outline-1"
+            >
+              RETURN TO SHOP
+            </Link>
+          </div>
+        )}
+      </Container>
+    </>
+  );
+};
+
+export default CartPage;
