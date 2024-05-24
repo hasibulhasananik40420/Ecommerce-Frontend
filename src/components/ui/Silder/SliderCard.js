@@ -13,6 +13,7 @@ const SliderCard = () => {
     const settings = {
         dots: true,
     infinite: true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -20,7 +21,7 @@ const SliderCard = () => {
   return (
     
      <div className=''>
-        <Slider {...settings}>
+        <Slider className='pb-5' {...settings}>
 
              <div className='borer-0 outline-0'>
              <div className="bg-[#2C2C46] lg:h-[450px] h-full rounded-lg lg:flex justify-between items-center lg:px-20 ">
