@@ -33,14 +33,6 @@ const CartPage = () => {
       price: 990,
       quantity: 1,
     },
-    {
-      id: 4,
-      image:
-        "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/114-400x400.jpg",
-      name: "Apple iPhone 14 Pro Max (256 GB) - White Titanium",
-      price: 990,
-      quantity: 1,
-    },
   ]);
 
   const handleQuantityChange = (productId, change) => {
@@ -72,10 +64,8 @@ const CartPage = () => {
     return sum;
   };
 
-
   return (
     <>
-      {products < 0 && <div className="text-5xl">yes</div>}
       <div className="bg-[#f4f4f4] p-4">
         <Container>
           <div className="flex gap-2">
