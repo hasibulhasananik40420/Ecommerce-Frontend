@@ -1,6 +1,6 @@
 import Container from "../../../components/shared/Container/Container"
 
-const Cartpage = () => {
+const CartPage = () => {
   return (
     <div>
         <Container>
