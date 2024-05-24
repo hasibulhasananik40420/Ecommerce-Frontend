@@ -1,7 +1,7 @@
 
 const CheckoutPage = () => {
   return (
-    <div>CheckoutPage</div>
+    <div>CheckoutPage new 2</div>
   )
 }
 
