@@ -4,6 +4,7 @@ import Image from "next/image";
 import Container from "../../../components/shared/Container/Container";
 import { Stars } from "../../../util/Stars";
 import { useState } from "react";
+import ProductCard from "../../../components/ui/card/card";
 
 const product = {
   name: "Unlocked Apple iPhone11 Pro, 64GB/256GB, 12MP Camera ",
@@ -56,10 +57,10 @@ const SingleProduct = () => {
     <>
       <Container>
         <section className="container mx-auto bg1 p-4">
-          <div className="flex gap-4">
-            <div className="w-1/2">
+          <div className="md:flex gap-6">
+            <div className="w-1/2 ">
               <div className="main-product-image">
-                <div>
+                <div className="border px-2 rounded-sm border-[#0fb232]">
                   <Image
                     src={product.image}
                     width={100}
@@ -90,8 +91,8 @@ const SingleProduct = () => {
                             count={5}
                             value={4}
                             position="horizontal"
-                            activeColor="!text-[#fdc904]"
-                            color="!text-[#fdc904]"
+                            activeColor="text-orange-600"
+                            color="text-gray-200"
                           />
 
                           <div className="flex justify-center items-center gap-2 text-[#000000c9] font-[600]">
@@ -220,7 +221,7 @@ const SingleProduct = () => {
         </section>
 
         <div className="border-t mt-8"></div>
-        <section id="ratings" className="container mx-auto mt-6 bg-white p-6">
+        <section id="ratings" className="mx-auto mt-6 bg-white py-6">
           <h3 className="bg-gray-100 p-2 text-[20px] font-semibold">
             Product Ratings
           </h3>
@@ -237,7 +238,7 @@ const SingleProduct = () => {
                 <div className="w-[100%]">
                   <Stars
                     activeColor="text-orange-600"
-                    color="text-orange-500"
+                    color="text-gray-200"
                     count={5}
                     value={totalRating / ratingArray.length}
                     position="horizontal"
@@ -327,15 +328,13 @@ const SingleProduct = () => {
                     </div>
                     <div className="">
                       {/* Rating stars */}
-                      <div className="w-[100%]">
-                        <Stars
-                          activeColor="text-orange-600"
-                          color="text-orange-500"
-                          count={5}
-                          value={item.productRating}
-                          position="horizontal"
-                        ></Stars>
-                      </div>
+                      <Stars
+                        activeColor="text-orange-600"
+                        color="text-gray-200"
+                        count={5}
+                        value={item.productRating}
+                        position="horizontal"
+                      ></Stars>
                     </div>
                     <p className="">{item.date}</p>
                     <p className="mt-2">{item.description}</p>
@@ -366,6 +365,8 @@ const SingleProduct = () => {
           </div>
         </section>
       </Container>
+
+      <ProductCard></ProductCard>
     </>
   );
 };
