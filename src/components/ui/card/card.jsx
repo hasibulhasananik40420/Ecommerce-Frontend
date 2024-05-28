@@ -9,6 +9,7 @@ const ProductCard = () => {
       style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 15px 64px 0px" }}
     >
       <div className="px-[30px] mt-2 w-full">
+
         <div className="progress-title flex justify-between">
           <p className="text-xs text-black font-[500]  leading-6">
             Products Available
@@ -51,6 +52,7 @@ const ProductCard = () => {
               <span>Add To Cart</span>
             </div>
           </button>
+
         </div>
         <div className="mb-3">
           <Stars
@@ -73,6 +75,7 @@ const ProductCard = () => {
           <span className=" main-price text-[#848484] line-through text-[18px] ml-2 font-semibold">
             $949.99
           </span>
+
         </p>
       </div>
       <div className="flex flex-col space-y-2 absolute group-hover:right-4 -right-10 top-20 transition-all duration-300 ease-in-out">

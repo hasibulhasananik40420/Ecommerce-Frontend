@@ -7,6 +7,7 @@ import { FaHeadphonesAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
+
     <div className="bg-[#F1F1F1] py-7 mt-10">
        <Container>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -14,6 +15,20 @@ const Footer = () => {
                <h1 className="text-[24px] font-bold">logo</h1>
                 <p className="text-[20px] font-normal mt-4">Find a location nearest you. </p>
                 <p className="text-[20px] text-red-400 underline mt-1">see Our Stores</p>
+
+
+    <div>
+      <Container>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10">
+          <div className="mt-10 md:mt-10 lg:mt-0">
+            <h1 className="text-[24px] font-bold">logo</h1>
+            <p className="text-[20px] font-normal mt-4">
+              Find a location nearest you.{" "}
+            </p>
+            <p className="text-[20px] text-red-400 underline mt-1">
+              see Our Stores
+            </p>
+
 
             <p className="text-[20px] font-normal mt-2">
               Support1234@Ecomall.com

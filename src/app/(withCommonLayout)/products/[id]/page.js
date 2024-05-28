@@ -3,13 +3,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-<<<<<<<< HEAD:src/app/(withCommonLayout)/products/[id]/page.js
+
 import Container from "../../../../components/shared/Container/Container";
 import { Stars } from "../../../../util/Stars";
-========
-import ProductCard from "../../../components/ui/card/card";
-import { FaSistrix, FaStar } from "react-icons/fa";
->>>>>>>> d31b08f1297143cfd805cb94e7a422c0d463d7cc:src/app/(withCommonLayout)/products/[id]/page.jsx
 
 const product = {
   name: "Unlocked Apple iPhone11 Pro, 64GB/256GB, 12MP Camera ",
@@ -17,6 +13,7 @@ const product = {
   description: "This is a sample product description.",
   price: 480.99,
   regularPrice: 599.23,
+
   quantity: 100,
   shipping: true,
   sold: 0,
@@ -43,6 +40,7 @@ const reviews = [
     productRating: 5,
     description:
       "onek valo maner porda gula colour o onek joss tai abar 4 pis order korlam quality onek valo thanks Daraz thanks seller vai ❤️!",
+
     image: [
       "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/112.jpg",
       "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/112.jpg",
@@ -72,7 +70,7 @@ const SingleProduct = () => {
       <Container>
         <section className="mx-auto p-4">
           <div className="md:flex gap-6">
-<<<<<<<< HEAD:src/app/(withCommonLayout)/products/[id]/page.js
+
             <div className="w-1/2 ">
               <div className="main-product-image">
                 <div className="border px-2 rounded-sm border-[#0fb232] flex justify-center items-center w-[500px] h-[500px]">
@@ -81,7 +79,6 @@ const SingleProduct = () => {
                     width={400}
                     height={400}
                     className="w-[400px] h-[400px] object-contain"
-========
             <div className="md:w-1/2 w-full">
               <div>
                 <div className="relative">
@@ -116,19 +113,13 @@ const SingleProduct = () => {
                     width={1000}
                     height={1000}
                     className="w-full"
->>>>>>>> d31b08f1297143cfd805cb94e7a422c0d463d7cc:src/app/(withCommonLayout)/products/[id]/page.jsx
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
 
-            {/* product content  */}
             <div className="md:w-1/2 w-full">
               <div>
                 <p className="text-[#aaaaaa]">{product.category}</p>
                 <div className="border-bottom">
                   <h3 className="md:text-3xl text-2xl  text-[#000000c9] font-[500]">
+
                     {" "}
                     {product.name}
                   </h3>
@@ -160,6 +151,7 @@ const SingleProduct = () => {
 
                     <div className="text-[#0fb232] text-[13px] font-semibold border md:px-2 px-1 rounded-sm border-[#0fb232]">
                       <span className="">{product.quantity} in stock</span>
+
                     </div>
                   </div>
 
@@ -210,6 +202,7 @@ const SingleProduct = () => {
                       <span className="text-[16px] text-gray-700">
                         {"(-" + discount + "%)"}
                       </span>
+
                     </p>
                   </div>
                 </div>
@@ -278,6 +271,7 @@ const SingleProduct = () => {
             <div className="md:flex items-center gap-6 bg-[#fffbf8] p-6 mt-4 border border-orange-200">
               <div className="md:block flex items-end">
                 <div className="w-full font-semibold text-orange-500 -mb-1">
+
                   <span className="text-3xl">
                     {(totalRating / ratingArray.length).toFixed(1)}
                   </span>
@@ -357,6 +351,7 @@ const SingleProduct = () => {
                   </button>
                 </div>
                 {/* <div className="flex mt-2 gap-4">
+
                   <button className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[200px] text-sm">
                     with comments (144)
                   </button>
@@ -364,6 +359,7 @@ const SingleProduct = () => {
                     With Media (56)
                   </button>
                 </div> */}
+
               </div>
             </div>
           </div>
@@ -402,6 +398,7 @@ const SingleProduct = () => {
                               alt={`Review image ${ii}`}
                               width={400}
                               height={400}
+
                             />
                           </div>
                         ))}
@@ -411,6 +408,7 @@ const SingleProduct = () => {
                       <div className="ml-4 p-2 bg-gray-100 mt-4 border">
                         <div>{`Seller's response:`}</div>
                         <p>{item.response}</p>
+
                       </div>
                     )}
                   </div>
