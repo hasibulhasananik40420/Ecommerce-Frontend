@@ -43,12 +43,14 @@ const ProductCard = () => {
         style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 15px 64px 0px" }}
       >
         <div className=" w-full h-[300px] relative">
-          <Image
-            src="https://shopo.quomodothemes.website/assets/images/product-img-2.jpg"
-            layout="fill"
-            objectFit="cover"
-            alt="Product Image"
-          />
+          <Link href="/single-product">
+            <Image
+              src="https://shopo.quomodothemes.website/assets/images/product-img-2.jpg"
+              layout="fill"
+              objectFit="cover"
+              alt="Product Image"
+            />
+          </Link>
         </div>
         <div className="px-[15px] pb-[30px] relative">
           <div className="absolute w-full h-10 px-[15px] left-0 top-40 group-hover:top-[85px] transition-all duration-300 ease-in-out">
