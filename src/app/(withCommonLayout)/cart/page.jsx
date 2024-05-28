@@ -85,7 +85,7 @@ const CartPage = () => {
         {products.length > 0 ? (
           <>
             <div className="grid md:grid-cols-3 mt-10">
-              <div className=" col-span-2">
+              <div className=" col-span-2 hidden">
                 <div>
                   <table className="snap-mandatory snap-x ">
                     <thead className="snap-center">
@@ -159,6 +159,75 @@ const CartPage = () => {
                   </table>
                 </div>
               </div>
+
+              <div>
+                {products.map((product) => (
+                  <div key={product.id} className="border rounded-md py-4 px-4 relative ">
+                    <div className="flex items-center ">
+                      <div>
+                        <Image
+                          className="w-32"
+                          src={product.image}
+                          width={100}
+                          height={100}
+                          alt="Picture of the author"
+                        ></Image>
+                      </div>
+                      <p className="pr-8 min-w-[200px]">{product.name}</p>
+                    </div>
+
+                    <div className="flex justify-between items-center mt-6 font-bold">
+                      <p>Price</p>
+                      <p className="">${product.price.toFixed(2)}</p>
+                    </div>
+                    <div className="flex justify-between items-center mt-6 font-bold">
+                      <p>Quantity</p>
+                      <div className="">
+                        <div className="bg-gray-100 inline-block">
+                          <button
+                            className="hover:bg-gray-300 font-bold px-4 mr-1"
+                            onClick={() => handleQuantityChange(product.id, -1)}
+                            disabled={product.quantity <= 1}
+                          >
+                            -
+                          </button>
+                          <span className="px-2">{product.quantity}</span>
+                          <button
+                            className="hover:bg-gray-300  px-4 ml-1"
+                            onClick={() => handleQuantityChange(product.id, 1)}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between items-center mt-6 font-bold">
+                      <p>Price</p>
+                      <div className="">
+                        ${(product.price * product.quantity).toFixed(2)}
+                        <span className="hidden">
+                          {subTotal.push({
+                            price: product.price,
+                            quantity: product.quantity,
+                          })}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="absolute top-4 right-4">
+                      <button onClick={() => handleDelete(product.id)}>
+                        <p
+                          className={` hover:bg-red-100 hover:text-red-500 text-gray-800  rounded-full `}
+                        >
+                          <FaTimes className="size-10 cursor-pointer p-2" />
+                        </p>
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
               <div className="border border-blue-500 rounded-md w-[100%]">
                 <div className="p-8 flex flex-col w-full justify-between h-full ">
                   <div>
