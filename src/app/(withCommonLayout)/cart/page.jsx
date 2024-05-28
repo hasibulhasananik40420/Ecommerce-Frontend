@@ -84,8 +84,8 @@ const CartPage = () => {
         </div>
         {products.length > 0 ? (
           <>
-            <div className="grid md:grid-cols-3 mt-10">
-              <div className=" col-span-2 hidden">
+            <div className="grid md:grid-cols-3 gap-6 mt-10">
+              <div className=" col-span-2 md:block hidden">
                 <div>
                   <table className="snap-mandatory snap-x ">
                     <thead className="snap-center">
@@ -160,9 +160,12 @@ const CartPage = () => {
                 </div>
               </div>
 
-              <div>
+              <div className="block md:hidden">
                 {products.map((product) => (
-                  <div key={product.id} className="border rounded-md py-4 px-4 relative ">
+                  <div
+                    key={product.id}
+                    className="border rounded-md py-4 px-4 relative "
+                  >
                     <div className="flex items-center ">
                       <div>
                         <Image
