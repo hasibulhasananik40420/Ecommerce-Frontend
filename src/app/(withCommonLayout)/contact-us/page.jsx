@@ -154,7 +154,7 @@ const ContactUp = () => {
             </div>
           </div>
 
-          <div className="flex-1 bg-white sm:p-10 p-3">
+          <div className="flex-1 bg-white sm:p-10 p-3" id="contact">
             <div className="title flex flex-col items-center w-full overflow-hidden">
               <h1 className="text-[34px] font-bold">Get In Touch</h1>
               <span className="-mt-2 block w-full">
@@ -174,7 +174,7 @@ const ContactUp = () => {
                 </svg>
               </span>
             </div>
-            <div className=" mt-5">
+            <div className=" mt-5" >
               <div className="input-com w-full h-full mb-4">
                 <label
                   className="capitalize block mb-2  text-[13px] font-normal text-[#797d81]"
