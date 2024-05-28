@@ -1,11 +1,15 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Image from "next/image";
-import Container from "../../../components/shared/Container/Container";
-import { Stars } from "../../../util/Stars";
 import { useState } from "react";
+<<<<<<<< HEAD:src/app/(withCommonLayout)/products/[id]/page.js
+import Container from "../../../../components/shared/Container/Container";
+import { Stars } from "../../../../util/Stars";
+========
 import ProductCard from "../../../components/ui/card/card";
 import { FaSistrix, FaStar } from "react-icons/fa";
+>>>>>>>> d31b08f1297143cfd805cb94e7a422c0d463d7cc:src/app/(withCommonLayout)/products/[id]/page.jsx
 
 const product = {
   name: "Unlocked Apple iPhone11 Pro, 64GB/256GB, 12MP Camera ",
@@ -17,7 +21,7 @@ const product = {
   shipping: true,
   sold: 0,
   image:
-    "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/112.jpg",
+    "https://shopo.quomodothemes.website/assets/images/product-details-1.png",
   category: "iPhone",
 };
 
@@ -68,6 +72,16 @@ const SingleProduct = () => {
       <Container>
         <section className="mx-auto p-4">
           <div className="md:flex gap-6">
+<<<<<<<< HEAD:src/app/(withCommonLayout)/products/[id]/page.js
+            <div className="w-1/2 ">
+              <div className="main-product-image">
+                <div className="border px-2 rounded-sm border-[#0fb232] flex justify-center items-center w-[500px] h-[500px]">
+                  <Image
+                    src={product.image}
+                    width={400}
+                    height={400}
+                    className="w-[400px] h-[400px] object-contain"
+========
             <div className="md:w-1/2 w-full">
               <div>
                 <div className="relative">
@@ -102,6 +116,7 @@ const SingleProduct = () => {
                     width={1000}
                     height={1000}
                     className="w-full"
+>>>>>>>> d31b08f1297143cfd805cb94e7a422c0d463d7cc:src/app/(withCommonLayout)/products/[id]/page.jsx
                     alt=""
                   />
                 </div>
@@ -405,7 +420,7 @@ const SingleProduct = () => {
         </section>
       </Container>
 
-      <ProductCard></ProductCard>
+     
     </>
   );
 };

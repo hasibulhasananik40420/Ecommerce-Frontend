@@ -3,21 +3,20 @@ import Link from "next/link";
 import { Stars } from "../../../util/Stars";
 
 const ProductCard = () => {
-  const specification = ["-15%", "hot", "new", "sold out"];
-
   return (
     <div
       className="border md:w-[300px] w-full h-full bg-white relative group overflow-hidden"
       style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 15px 64px 0px" }}
     >
       <div className="px-[30px] mt-2 w-full">
-    <div className="border w-[300px] h-full bg-white ">
-      {/* <div className="px-[30px] mt-2 w-full">
+
         <div className="progress-title flex justify-between">
           <p className="text-xs text-black font-[500]  leading-6">
             Products Available
           </p>
-          <span className="text-sm text-black font-[600] leading-6">20</span>
+          <span className="text-sm text-black font-[600] leading-6">
+            {/* {availableProducts} */} 20
+          </span>
         </div>
         <div className="progress w-full h-[5px] rounded-[22px] bg-gray-200 relative overflow-hidden">
           <div
@@ -25,25 +24,7 @@ const ProductCard = () => {
             style={{ width: `${50}%` }}
           ></div>
         </div>
-      </div> */}
-      <div className="relative">
-        <div className="absolute left-2 top-2 z-50 flex flex-col gap-1 ">
-          {specification.map((item, i) => (
-            <p
-              key={i}
-              className={`
-              ${item === "hot" && "bg-[#DD2831]"}
-              ${item === "new" && "bg-[#19cc40]"}
-               ${
-                 item === "sold out" && "bg-gray-400"
-               } bg-[#0068c8] text-[12px]  font-700 leading-none py-[6px] text-center px-3 uppercase text-[#ffffff] rounded-e-md rounded-b-md tracking-wider `}
-            >
-              {item}
-            </p>
-          ))}
-        </div>
       </div>
-
       <div className="product-card-img w-full h-[300px] relative">
         <Image
           src="https://shopo.quomodothemes.website/assets/images/product-img-2.jpg"
@@ -72,20 +53,6 @@ const ProductCard = () => {
             </div>
           </button>
 
-      <div
-        className=" group relative overflow-hidden"
-        style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 15px 64px 0px" }}
-      >
-        <div className=" w-full h-[300px] relative">
-          <Link href="/single-product">
-            <Image
-              src="https://shopo.quomodothemes.website/assets/images/product-img-2.jpg"
-              layout="fill"
-              objectFit="cover"
-              alt="Product Image"
-            />
-          </Link>
-
         </div>
         <div className="mb-3">
           <Stars
@@ -96,11 +63,11 @@ const ProductCard = () => {
             color="text-gray-200 w-4"
           ></Stars>
         </div>
-        <Link href="/single-product">
+        
           <p className="font-bold mb-2 text-[15px] font-600 text-black leading-[24px] line-clamp-2 hover:text-blue-600">
             Xoggle aute et pariatur adipisicing nostrud et excepteur
           </p>
-        </Link>
+     
         <p className="price">
           <span className=" text-[#dd2831]  font-[700] text-[18px]">
             $699.99
@@ -108,6 +75,7 @@ const ProductCard = () => {
           <span className=" main-price text-[#848484] line-through text-[18px] ml-2 font-semibold">
             $949.99
           </span>
+
         </p>
       </div>
       <div className="flex flex-col space-y-2 absolute group-hover:right-4 -right-10 top-20 transition-all duration-300 ease-in-out">

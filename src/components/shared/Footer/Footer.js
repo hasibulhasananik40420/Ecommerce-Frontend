@@ -16,6 +16,7 @@ const Footer = () => {
                 <p className="text-[20px] font-normal mt-4">Find a location nearest you. </p>
                 <p className="text-[20px] text-red-400 underline mt-1">see Our Stores</p>
 
+
     <div>
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10">
