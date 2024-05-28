@@ -5,12 +5,14 @@ import Container from "../../../components/shared/Container/Container";
 import { Stars } from "../../../util/Stars";
 import { useState } from "react";
 import ProductCard from "../../../components/ui/card/card";
+import { FaSearch, FaStar } from "react-icons/fa";
 
 const product = {
   name: "Unlocked Apple iPhone11 Pro, 64GB/256GB, 12MP Camera ",
   slug: "sample-product", // Usually, you would generate this using a slugify function
   description: "This is a sample product description.",
-  price: 19.99,
+  price: 480.99,
+  regularPrice: 599.23,
   quantity: 100,
   shipping: true,
   sold: 0,
@@ -18,6 +20,13 @@ const product = {
     "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/112.jpg",
   category: "iPhone",
 };
+
+const discount = (
+  ((product.regularPrice - product.price) / product.regularPrice) *
+  100
+).toFixed(0);
+
+const specification = ["-" + discount + "%", "new"];
 
 const rating = [1];
 
@@ -28,7 +37,8 @@ const reviews = [
       name: "Omar Faruk",
     },
     productRating: 5,
-    description: "Great product!",
+    description:
+      "onek valo maner porda gula colour o onek joss tai abar 4 pis order korlam quality onek valo thanks Daraz thanks seller vai ❤️!",
     image: [
       "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/112.jpg",
       "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/112.jpg",
@@ -56,15 +66,41 @@ const SingleProduct = () => {
   return (
     <>
       <Container>
-        <section className="container mx-auto bg1 p-4">
+        <section className="mx-auto p-4">
           <div className="md:flex gap-6">
-            <div className="w-1/2 ">
-              <div className="main-product-image">
-                <div className="border px-2 rounded-sm border-[#0fb232]">
+            <div className="md:w-1/2 w-full">
+              <div>
+                <div className="relative">
+                  <div className="absolute left-4 top-4 z-50 flex flex-col gap-1 ">
+                    {specification.map((item, i) => (
+                      <p
+                        key={i}
+                        className={`
+              ${item === "hot" && "bg-[#DD2831]"}
+              ${item === "new" && "bg-[#19cc40]"}
+               ${
+                 item === "sold out" && "bg-gray-400"
+               } bg-[#0068c8] text-[14px]  font-700 leading-none py-[6px] text-center px-3 uppercase text-[#ffffff] rounded-e-md rounded-b-md tracking-wider `}
+                      >
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+                <div className="relative">
+                  <div className="absolute right-4 top-4 z-50 flex flex-col gap-1 ">
+                    <p
+                      className={` hover:bg-blue-100 text-gray-800  rounded-full `}
+                    >
+                      <FaSearch className="size-10 cursor-pointer p-2" />
+                    </p>
+                  </div>
+                </div>
+                <div className="border px-2 rounded-sm border-gray-200">
                   <Image
                     src={product.image}
-                    width={100}
-                    height={100}
+                    width={1000}
+                    height={1000}
                     className="w-full"
                     alt=""
                   />
@@ -73,48 +109,42 @@ const SingleProduct = () => {
             </div>
 
             {/* product content  */}
-            <div className="w-1/2">
-              <div className="main-product-details">
+            <div className="md:w-1/2 w-full">
+              <div>
                 <p className="text-[#aaaaaa]">{product.category}</p>
                 <div className="border-bottom">
-                  <h3 className="text-3xl text-[#000000c9] font-[500]">
+                  <h3 className="md:text-3xl text-2xl  text-[#000000c9] font-[500]">
                     {" "}
                     {product.name}
                   </h3>
                 </div>
                 <div className="border-bottom py-3">
                   <div className="flex gap-2 justify-start">
-                    <div className="flex text-[16px] gap-4 text-[#fdc904] items-center">
-                      {rating.length > 0 ? (
-                        <div className="flex text-[15px] items-center gap-2">
-                          <Stars
-                            count={5}
-                            value={4}
-                            position="horizontal"
-                            activeColor="text-orange-600"
-                            color="text-gray-200"
-                          />
-
-                          <div className="flex justify-center items-center gap-2 text-[#000000c9] font-[600]">
-                            <p className="">
-                              ({rating.length.toFixed(2)}) {rating.length}{" "}
-                              Review{" "}
-                            </p>
+                    {rating.length > 0 ? (
+                      <div className="flex md:text-[16px] text-[13px] gap-4 text-[#fdc904] items-center">
+                        <div className=" text-[15px] items-center gap-2">
+                          <div className="block">
+                            <Stars
+                              count={5}
+                              value={4}
+                              position="horizontal"
+                              activeColor="text-orange-600"
+                              color="text-gray-200"
+                            />
                           </div>
                         </div>
-                      ) : (
-                        <p className="text-red-500">No Ratings</p>
-                      )}
-
-                      <div
-                        class="text-[#0fb232] font-semibold border px-2 rounded-sm border-[#0fb232]"
-                        data-original="9 in stock"
-                        data-class="in-stock"
-                      >
-                        <span class="availability-text">
-                          {product.quantity} in stock
-                        </span>
+                        <div className="flex justify-center items-center gap-2 text-[#000000c9] font-[600]">
+                          <p className="">
+                            ({rating.length.toFixed(2)}) {rating.length} Review{" "}
+                          </p>
+                        </div>
                       </div>
+                    ) : (
+                      <p className="text-red-500">No Ratings</p>
+                    )}
+
+                    <div className="text-[#0fb232] text-[13px] font-semibold border md:px-2 px-1 rounded-sm border-[#0fb232]">
+                      <span className="">{product.quantity} in stock</span>
                     </div>
                   </div>
 
@@ -159,9 +189,12 @@ const SingleProduct = () => {
                     <p className="text-red-500 text-3xl font-bold">
                       <del className="text-xl  font-semibold text-gray-400">
                         {" "}
-                        <span>$599.23</span>
-                      </del>{" "}
-                      $480.99{" "}
+                        <span>${product.regularPrice}</span>
+                      </del>
+                      ${product.price}{" "}
+                      <span className="text-[16px] text-gray-700">
+                        {"(-" + discount + "%)"}
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -227,9 +260,9 @@ const SingleProduct = () => {
           </h3>
 
           <div>
-            <div className="flex items-center gap-6 bg-[#fffbf8] p-6 mt-4 border border-orange-200">
-              <div className="">
-                <div className="font-semibold text-orange-500">
+            <div className="md:flex items-center gap-6 bg-[#fffbf8] p-6 mt-4 border border-orange-200">
+              <div className="md:block flex items-end">
+                <div className="w-full font-semibold text-orange-500 -mb-1">
                   <span className="text-3xl">
                     {(totalRating / ratingArray.length).toFixed(1)}
                   </span>
@@ -246,7 +279,7 @@ const SingleProduct = () => {
                 </div>
               </div>
               <div className="mt-4">
-                <div className="flex justify-between gap-4">
+                <div className="grid  md:grid-cols-6  grid-cols-3 justify-between gap-4">
                   <button
                     onClick={() => setActive(0)}
                     className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
@@ -255,53 +288,67 @@ const SingleProduct = () => {
                   </button>
                   <button
                     onClick={() => setActive(5)}
-                    className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
+                    className="flex gap-1 items-center justify-center px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
                   >
-                    {`5 star (${
-                      ratingArray.filter((value) => value === 5).length
-                    })`}
+                    <FaStar className="text-[#ea580c]" />
+                    <p>5</p>
+                    <span>
+                      {`(${ratingArray.filter((value) => value === 5).length})`}
+                    </span>
                   </button>
+
                   <button
                     onClick={() => setActive(4)}
-                    className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
+                    className="flex gap-1 items-center justify-center px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
                   >
-                    {`4 star (${
-                      ratingArray.filter((value) => value === 4).length
-                    })`}
+                    <FaStar className="text-[#ea580c]" />
+                    <p>4</p>
+                    <span>
+                      {`(${ratingArray.filter((value) => value === 4).length})`}
+                    </span>
                   </button>
+
                   <button
                     onClick={() => setActive(3)}
-                    className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
+                    className="flex gap-1 items-center justify-center px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
                   >
-                    {`3 star (${
-                      ratingArray.filter((value) => value === 3).length
-                    })`}
+                    <FaStar className="text-[#ea580c]" />
+                    <p>3</p>
+                    <span>
+                      {`(${ratingArray.filter((value) => value === 3).length})`}
+                    </span>
                   </button>
+
                   <button
                     onClick={() => setActive(2)}
-                    className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
+                    className="flex gap-1 items-center justify-center px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
                   >
-                    {`2 star (${
-                      ratingArray.filter((value) => value === 2).length
-                    })`}
+                    <FaStar className="text-[#ea580c]" />
+                    <p>2</p>
+                    <span>
+                      {`(${ratingArray.filter((value) => value === 2).length})`}
+                    </span>
                   </button>
+
                   <button
                     onClick={() => setActive(1)}
-                    className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
+                    className="flex gap-1 items-center justify-center px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[100px] text-sm"
                   >
-                    {`1 star (${
-                      ratingArray.filter((value) => value === 1).length
-                    })`}
+                    <FaStar className="text-[#ea580c]" />
+                    <p>1</p>
+                    <span>
+                      {`(${ratingArray.filter((value) => value === 1).length})`}
+                    </span>
                   </button>
                 </div>
-                <div className="flex mt-2 gap-4">
+                {/* <div className="flex mt-2 gap-4">
                   <button className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[200px] text-sm">
                     with comments (144)
                   </button>
                   <button className="px-2 py-1 text-black border border-gray-200 focus:border-red-500 bg-white w-[200px] text-sm">
                     With Media (56)
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -310,44 +357,37 @@ const SingleProduct = () => {
             {reviews
               .filter((item) => item.productRating === active || active === 0)
               .map((item, i) => (
-                <div className="flex gap-2 mt-4" key={i}>
-                  {/* Avatar */}
-                  <div className="w-14 h-14">
-                    <Image
-                      width={50}
-                      height={50}
-                      alt="profile"
-                      className="rounded-full"
-                      src="https://down-my.img.susercontent.com/file/ac25f85470ed49473570bc86d990d4e7_tn"
-                    />
-                  </div>
+                <div className="flex gap-2 mt-4 w-full" key={i}>
+                 
                   {/* Main content */}
-                  <div className="">
-                    <div className="">
-                      {item?.user?.name ? item?.user?.name : "User"}{" "}
+                  <div className="w-full">
+                    <div className="flex gap-2 items-center">
+                      <div className="p-0">
+                        {/* Rating stars */}
+                        <Stars
+                          activeColor="text-orange-600"
+                          color="text-gray-200"
+                          count={5}
+                          value={item.productRating}
+                          position="horizontal"
+                        ></Stars>
+                      </div>
+                      <div className="">
+                        {item?.user?.name ? item?.user?.name : "User"}{" "}
+                      </div>
                     </div>
-                    <div className="">
-                      {/* Rating stars */}
-                      <Stars
-                        activeColor="text-orange-600"
-                        color="text-gray-200"
-                        count={5}
-                        value={item.productRating}
-                        position="horizontal"
-                      ></Stars>
-                    </div>
-                    <p className="">{item.date}</p>
-                    <p className="mt-2">{item.description}</p>
+                    {/* <p className="">{item.date}</p> */}
+                    <p className="mt-1">{item.description}</p>
                     <div className="mt-2">
                       <div className="flex flex-row items-center gap-2">
                         {item.image.map((img, ii) => (
-                          <div className="w-32 h-16" key={ii}>
+                          <div className="w-32 h-32" key={ii}>
                             <Image
                               src={img}
-                              className="w-full h-full"
+                              className="w-full h-full p-0"
                               alt={`Review image ${ii}`}
-                              width={100}
-                              height={100}
+                              width={400}
+                              height={400}
                             />
                           </div>
                         ))}
@@ -355,8 +395,8 @@ const SingleProduct = () => {
                     </div>
                     {item.response && (
                       <div className="ml-4 p-2 bg-gray-100 mt-4 border">
-                        <div className="">Seller's response:</div>
-                        <div className="">{item.response}</div>
+                        <div>{`Seller's response:`}</div>
+                        <p>{item.response}</p>
                       </div>
                     )}
                   </div>
