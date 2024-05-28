@@ -43,6 +43,7 @@ const ProductCard = () => {
           ))}
         </div>
       </div>
+
       <div className="product-card-img w-full h-[300px] relative">
         <Image
           src="https://shopo.quomodothemes.website/assets/images/product-img-2.jpg"
@@ -70,6 +71,21 @@ const ProductCard = () => {
               <span>Add To Cart</span>
             </div>
           </button>
+
+      <div
+        className=" group relative overflow-hidden"
+        style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 15px 64px 0px" }}
+      >
+        <div className=" w-full h-[300px] relative">
+          <Link href="/single-product">
+            <Image
+              src="https://shopo.quomodothemes.website/assets/images/product-img-2.jpg"
+              layout="fill"
+              objectFit="cover"
+              alt="Product Image"
+            />
+          </Link>
+
         </div>
         <div className="mb-3">
           <Stars
