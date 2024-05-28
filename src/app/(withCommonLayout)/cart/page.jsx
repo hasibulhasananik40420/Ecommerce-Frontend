@@ -315,7 +315,7 @@ const CartPage = () => {
                       </p>
                     </div>
 
-                    <Link href="./checkout">
+                    <Link href="/checkout">
                       <button className="bg-blue-500 text-white w-full py-2 font-bold rounded-sm hover:text-blue-500 outline outline-blue-500 hover:bg-white outline-1">
                         Proceed to checkout
                       </button>
