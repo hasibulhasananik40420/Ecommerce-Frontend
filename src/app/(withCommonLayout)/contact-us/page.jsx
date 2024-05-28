@@ -4,11 +4,9 @@ const ContactUp = () => {
   return (
     <>
       <Container>
-        <div className="">
-          <div className="flex justify-center pt-10 pb-10 font-400 text-[13px] bg-[#fffaef]">
+      <div className="flex justify-center pt-10 pb-10 font-400 text-[13px] bg-[#fffaef]">
             <h1 className="text-3xl font-semibold">Contact</h1>
           </div>
-        </div>
         <div className="w-full lg:flex lg:space-x-[30px] p-5 bg-[#f8f8f8]">
           <div className="lg:w-1/2 w-full">
             <h1 className="text-[22px] font-semibold leading-[30px] mb-1">
