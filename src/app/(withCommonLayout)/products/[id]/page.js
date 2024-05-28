@@ -1,10 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import Image from "next/image";
-import Container from "../../../components/shared/Container/Container";
-import { Stars } from "../../../util/Stars";
 import { useState } from "react";
-import ProductCard from "../../../components/ui/card/card";
+import Container from "../../../../components/shared/Container/Container";
+import { Stars } from "../../../../util/Stars";
 
 const product = {
   name: "Unlocked Apple iPhone11 Pro, 64GB/256GB, 12MP Camera ",
@@ -15,7 +15,7 @@ const product = {
   shipping: true,
   sold: 0,
   image:
-    "https://ecomall-be87.kxcdn.com/ecomall/wp-content/uploads/2023/03/112.jpg",
+    "https://shopo.quomodothemes.website/assets/images/product-details-1.png",
   category: "iPhone",
 };
 
@@ -60,12 +60,12 @@ const SingleProduct = () => {
           <div className="md:flex gap-6">
             <div className="w-1/2 ">
               <div className="main-product-image">
-                <div className="border px-2 rounded-sm border-[#0fb232]">
+                <div className="border px-2 rounded-sm border-[#0fb232] flex justify-center items-center w-[500px] h-[500px]">
                   <Image
                     src={product.image}
-                    width={100}
-                    height={100}
-                    className="w-full"
+                    width={400}
+                    height={400}
+                    className="w-[400px] h-[400px] object-contain"
                     alt=""
                   />
                 </div>
@@ -366,7 +366,7 @@ const SingleProduct = () => {
         </section>
       </Container>
 
-      <ProductCard></ProductCard>
+     
     </>
   );
 };

@@ -5,7 +5,7 @@ import { Stars } from "../../../util/Stars";
 const ProductCard = () => {
   return (
     <div
-      className="border w-[300px] h-full bg-white relative group overflow-hidden"
+      className="border md:w-[300px] w-full h-full bg-white relative group overflow-hidden"
       style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 15px 64px 0px" }}
     >
       <div className="px-[30px] mt-2 w-full">
@@ -61,11 +61,11 @@ const ProductCard = () => {
             color="text-gray-200 w-4"
           ></Stars>
         </div>
-        <Link href="/single-product">
+        
           <p className="font-bold mb-2 text-[15px] font-600 text-black leading-[24px] line-clamp-2 hover:text-blue-600">
             Xoggle aute et pariatur adipisicing nostrud et excepteur
           </p>
-        </Link>
+     
         <p className="price">
           <span className=" text-[#dd2831]  font-[700] text-[18px]">
             $699.99

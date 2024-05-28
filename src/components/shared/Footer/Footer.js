@@ -7,9 +7,9 @@ import { FaHeadphonesAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="bg-[#F1F1F1] py-7 mt-10">
        <Container>
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             <div className="mt-10 md:mt-10 lg:mt-0">
                <h1 className="text-[24px] font-bold">logo</h1>
                 <p className="text-[20px] font-normal mt-4">Find a location nearest you. </p>
