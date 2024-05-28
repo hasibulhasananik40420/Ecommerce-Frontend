@@ -5,7 +5,7 @@ import Container from "../../../components/shared/Container/Container";
 import { Stars } from "../../../util/Stars";
 import { useState } from "react";
 import ProductCard from "../../../components/ui/card/card";
-import { FaSearch, FaStar } from "react-icons/fa";
+import { FaSistrix, FaStar } from "react-icons/fa";
 
 const product = {
   name: "Unlocked Apple iPhone11 Pro, 64GB/256GB, 12MP Camera ",
@@ -92,7 +92,7 @@ const SingleProduct = () => {
                     <p
                       className={` hover:bg-blue-100 text-gray-800  rounded-full `}
                     >
-                      <FaSearch className="size-10 cursor-pointer p-2" />
+                      <FaSistrix className="size-10 cursor-pointer p-2" />
                     </p>
                   </div>
                 </div>
@@ -358,7 +358,6 @@ const SingleProduct = () => {
               .filter((item) => item.productRating === active || active === 0)
               .map((item, i) => (
                 <div className="flex gap-2 mt-4 w-full" key={i}>
-                 
                   {/* Main content */}
                   <div className="w-full">
                     <div className="flex gap-2 items-center">

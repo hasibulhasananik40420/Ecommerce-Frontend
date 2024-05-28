@@ -5,6 +5,7 @@ import Container from "../../../components/shared/Container/Container";
 import Image from "next/image";
 import cartIcon from "./../../../assets/icon/cart.png";
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 
 const CartPage = () => {
   const [shippingCost, setShippingCost] = useState(70);
@@ -145,20 +146,11 @@ const CartPage = () => {
                           </td>
                           <td className="w-[110px]">
                             <button onClick={() => handleDelete(product.id)}>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="size-6"
+                              <p
+                                className={` hover:bg-red-100 hover:text-red-500 text-gray-800  rounded-full `}
                               >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M6 18 18 6M6 6l12 12"
-                                />
-                              </svg>
+                                <FaTimes className="size-10 cursor-pointer p-2" />
+                              </p>
                             </button>
                           </td>
                         </tr>
