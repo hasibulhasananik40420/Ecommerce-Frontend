@@ -3,6 +3,7 @@ import Container from "../../../components/shared/Container/Container";
 import Link from "next/link";
 
 import { FaArrowRight, FaRegComment, FaRegUser } from "react-icons/fa";
+import { blogs } from "../blog/blogsData";
 
 const About = () => {
   return (
@@ -64,106 +65,56 @@ const About = () => {
 
           <div className="w-full">
             <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-[30px] gap-5">
-             
-             
-              <div className="item w-full ">
-                <div className="w-full border border-[#D3D3D3]">
-                  <div className="img w-full h-[340px]">
-                    <Image
-                      src="https://shopo.quomodothemes.website/assets/images/blog-img-1.jpg"
-                      alt="blog"
-                      className="w-full h-full object-cover"
-                      width={500}
-                      height={200}
-                    />
-                  </div>
-                  <div className="p-[24px]">
-                    <div className="flex space-x-9 mb-3">
-                      <div className="flex space-x-1.5 items-center">
-                        <span>
-                          <FaRegUser className="size-[14px] text-orange-500" />
-                        </span>
-                        <span className="text- capitalize">By admin</span>
-                      </div>
-                      <div className="flex space-x-1.5 items-center">
-                        <FaRegComment className="size-[14px] text-orange-500" />
-                        <span className="text- capitalize">6 Comments</span>
-                      </div>
+              {blogs.slice(0, 2).map((blog, i) => (
+                <div className="item w-full " key={i}>
+                  <div className="w-full border border-[#D3D3D3]">
+                    <div className="img w-full h-[340px]">
+                      <Image
+                        src={blog?.image}
+                        alt={blog?.tag}
+                        className="w-full h-full object-cover"
+                        width={500}
+                        height={200}
+                      />
                     </div>
-                    <a href="#" className="block">
-                      <h1 className="text-[22px] leading-[32px] font-semibold transition-all hover:text-orange-500">
-                        What information is needed for Cash on delivery?
-                      </h1>
-                    </a>
-                    <p className="text-[15px] leading-[24px] mt-4">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua...
-                    </p>
-                    <div className="w-full mt-[30px]">
-                      <div
-                        href="#"
-                        className="flex w-[200px]   items-center font-semibold transition-all"
-                      >
-                        View More{" "}
-                        <span>
-                          <FaArrowRight className="size-4 ml-2" />
-                        </span>
+                    <div className="p-[24px]">
+                      <div className="flex space-x-9 mb-3">
+                        <div className="flex space-x-1.5 items-center">
+                          <span>
+                            <FaRegUser className="size-[14px] text-orange-500" />
+                          </span>
+                          <span className=" capitalize">by {blog?.post}</span>
+                        </div>
+                        <div className="flex space-x-1.5 items-center">
+                          <FaRegComment className="size-[14px] text-orange-500" />
+                          <span className=" capitalize">
+                            {blog.comment} Comments
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="item w-full ">
-                <div className="w-full border border-[#D3D3D3]">
-                  <div className="img w-full h-[340px]">
-                    <Image
-                      src="https://shopo.quomodothemes.website/assets/images/blog-img-2.jpg"
-                      alt="blog"
-                      className="w-full h-full object-cover"
-                      width={500}
-                      height={200}
-                    />
-                  </div>
-                  <div className="p-[24px]">
-                    <div className="flex space-x-9 mb-3">
-                      <div className="flex space-x-1.5 items-center">
-                        <span>
-                          <FaRegUser className="size-[14px] text-orange-500" />
-                        </span>
-                        <span className="text- capitalize">By admin</span>
-                      </div>
-                      <div className="flex space-x-1.5 items-center">
-                        <FaRegComment className="size-[14px] text-orange-500" />
-                        <span className="text- capitalize">6 Comments</span>
-                      </div>
-                    </div>
-                    <a href="#" className="block">
-                      <h1 className="text-[22px] leading-[32px] font-semibold transition-all hover:text-orange-500">
-                        What information is needed for Cash on delivery?
-                      </h1>
-                    </a>
-                    <p className="text-[15px] leading-[24px] mt-4">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua...
-                    </p>
-                    <div className="w-full mt-[30px]">
-                      <div
-                        href="#"
-                        className="flex w-[200px]   items-center font-semibold transition-all"
-                      >
-                        View More{" "}
-                        <span>
-                          <FaArrowRight className="size-4 ml-2" />
-                        </span>
+                      <Link href="#">
+                        <h1 className="text-[22px] leading-[32px] font-semibold transition-all hover:text-orange-500">
+                          {blog.title}
+                        </h1>
+                      </Link>
+                      <p className="text-[15px] leading-[24px] mt-4">
+                        {blog.description}
+                      </p>
+                      <div className="w-full mt-[30px]">
+                        <div
+                          href="#"
+                          className="flex w-[200px]   items-center font-semibold transition-all"
+                        >
+                          View More{" "}
+                          <span>
+                            <FaArrowRight className="size-4 ml-2" />
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-             
-
+              ))}
             </div>
           </div>
         </div>
