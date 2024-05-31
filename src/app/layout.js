@@ -1,4 +1,5 @@
 
+import { Toaster } from 'sonner';
 import Providers from '../lib/Providers/Providers';
 import './globals.css'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
@@ -17,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className='font-Montserrat'>
       <AppRouterCacheProvider>
-       
+      <Toaster position="top-right" richColors />
         {children}
         </AppRouterCacheProvider>
         </body>
