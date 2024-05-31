@@ -9,8 +9,10 @@ export const registerUser = async (formData) => {
     });
 
     if (!res.ok) {
-      const errorText = await res.text(); // Read the error message from the response
-      throw new Error(`Failed to register user: ${errorText}`);
+      // const errorText = await res.text(); // Read the error message from the response
+      // throw new Error(`Failed to register user: ${errorText}`);
+      console.log(  res.message  , 'file name : RegisterUser line number : +-14');
+      
     }
 
     const registerInfo = await res.json();

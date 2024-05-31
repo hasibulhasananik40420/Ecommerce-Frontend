@@ -10,7 +10,6 @@ import { registerUser } from "../../services/actions/RegisterUser"
 import ReuseInputField from "../../components/ReuseForms/ReuseInputField"
 import { modifyPayload } from "../../util/modifyPayload"
 import { toast } from "sonner"
-import { useRouter } from "next/navigation"
 
 const RegisterPage = () => {
   // const router = useRouter();
@@ -21,13 +20,12 @@ const RegisterPage = () => {
     // console.log(data)
     try {
        const res = await registerUser(data)
-      //  console.log(res)
-        if(res?.payload){
+        if(res?.success){
           toast.success(res?.message, { duration: 5000 });
-          // router.push(`/${{token:res.payload}}`);
+          
         }
         else{
-          toast.error(res?.message, { duration: 5000 }); // Show error message from backen response
+          toast.error(res?.message, { duration: 2000 }); // Show error message from backen response
 
         }
       //  console.log(res)
@@ -35,7 +33,8 @@ const RegisterPage = () => {
       
      
     } catch (err) {
-      console.error(err.message);
+      
+      toast.error(err?.message, { duration: 2000 }); // Show error message from backen response
     }
     // console.log(data)
   };
