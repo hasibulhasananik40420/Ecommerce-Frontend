@@ -5,19 +5,17 @@ import {
   Box,
   Typography,
   Grid,
-  TextField,
   Button,
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import login from "../../assets/login (2).png";
-import { useForm } from "react-hook-form";
 import { userLogin } from "../../services/actions/userLogin";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { storeUserInfo } from "../../services/authServices";
 import ReuseForm from "../../components/ReuseForms/ReuseForm";
 import ReuseInputField from "../../components/ReuseForms/ReuseInputField";
+import { storeUserInfo } from "../../services/authServices";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -26,11 +24,13 @@ const LoginPage = () => {
   const handleLogin = async (values) => {
     try {
       const res = await userLogin(values);
+      // console.log(res)
       if (res?.success) {
         toast.success(res?.message, { duration: 2000 });
-        storeUserInfo(res?.payload?.userWithoutPassword);
+        storeUserInfo({accessToken: res?.payload?.accessToken});
         router.push("/");
       } else {
+        console.log(res.message)
         toast.error(res?.message, { duration: 2000 }); // Show error message from backend response
       }
     } catch (err) {

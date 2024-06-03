@@ -1,4 +1,4 @@
-
+'use client'
 import Link from 'next/link';
 import Container from '../Container/Container'
 import { CiShoppingCart } from "react-icons/ci";
@@ -6,13 +6,14 @@ import { CiHeart } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import dynamic from "next/dynamic";
+import DashboardButton from '../../ui/DashboardButton/DashboardButton';
 
 
 const Navbar = () => {
-  
 
   const AuthInfo = dynamic(() => import('../../ui/AuthInfo/AuthInfo'), { ssr: false })
-   
+ 
+
   return (
     <div className=' bg-white'>
         <Container>
@@ -48,12 +49,14 @@ const Navbar = () => {
                     <p className='text-[14px] font-semibold text-white'>0</p>
                    </span>
                   </Link>
+                  
+                   <DashboardButton/>
 
-                   <Link href='/login' className='cursor-pointer'>
-                   <CiUser className='size-9 hover:text-[#0169C8] duration-300'/>
-                   </Link>
+                   
 
-                    {/* <AuthInfo/> */}
+                    
+
+                    <AuthInfo/>
                 </div>
             </div>
         </Container>

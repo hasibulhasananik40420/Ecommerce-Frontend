@@ -1,25 +1,42 @@
-// localStorageUtils.ts
+import { authKey } from "../contants/authKey";
+import { decodedToken } from "../util/jwt";
+import Cookies from 'js-cookie';
 
-export const storeUserInfo = (userInfo) => {
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+export const storeUserInfo = ({accessToken}) => {
+
+      //use to js-cookies
+
+      if (!accessToken) return;
+      Cookies.set(authKey, accessToken); // Set the access token in cookies
+
   };
   
   
-//   export const getUserInfo = () => {
-//     const userInfo = localStorage.getItem('userInfo');
-//     return userInfo ? JSON.parse(userInfo) : null;
-//   };
-  
+  export const getUserInfo = () => {
 
-export const getUserInfo = () => {
-  if (typeof window !== 'undefined') {
-    const userInfoString = localStorage.getItem('userInfo');
-    console.log('userInfoString:', userInfoString); // Log the retrieved data before parsing
-    const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
-    console.log('userInfo:', userInfo); // Log the parsed userInfo
-    return userInfo;
-  }
-  return null;
+
+    const accessToken = Cookies.get(authKey); // Get the access token from cookies
+    if (accessToken) {
+        const decodedData = decodedToken(accessToken);
+        return { ...decodedData };
+    }
+
+
+      
+  };
+
+ 
+  
+  export const isLoggedIn = () => {
+    return !!Cookies.get(authKey); // Check if access token exists in cookies
 };
 
+  
+
+
+export const removeUserFromCookies = () => {
+  Cookies.remove(authKey); // Remove the access token from cookies
+};
+
+  
   
