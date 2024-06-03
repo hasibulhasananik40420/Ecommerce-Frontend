@@ -1,6 +1,6 @@
 'use client'
 
-import { Container,Stack,Box, Typography, Grid, TextField, Button } from "@mui/material"
+import { Container,Stack,Box, Typography, Grid, Button } from "@mui/material"
 import Image from "next/image"
 import Link from "next/link"
 import login from "../../assets/login (2).png"
@@ -12,7 +12,6 @@ import { modifyPayload } from "../../util/modifyPayload"
 import { toast } from "sonner"
 
 const RegisterPage = () => {
-  // const router = useRouter();
 
 
   const handleRegister = async (values) => {
@@ -25,7 +24,7 @@ const RegisterPage = () => {
           
         }
         else{
-          toast.error(res?.message, { duration: 2000 }); // Show error message from backen response
+          toast.error(res?.message, { duration: 2000 }); 
 
         }
       //  console.log(res)
@@ -34,7 +33,7 @@ const RegisterPage = () => {
      
     } catch (err) {
       
-      toast.error(err?.message, { duration: 2000 }); // Show error message from backen response
+      toast.error(err?.message, { duration: 2000 }); 
     }
     // console.log(data)
   };
