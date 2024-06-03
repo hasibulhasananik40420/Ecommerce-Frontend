@@ -37,10 +37,12 @@ export const axiosBaseQuery =
         method,
         data,
         params,
-        headers: {
-          "Content-Type": contentType || "application/json",
-          ...headers,
-        },
+        // Pass the cookies to the Axios request
+        // headers: {
+        //   "Content-Type": contentType || "application/json",
+        // },
+        // Add cookies to the Axios request
+        // cookies: cookies
       });
       return { data: result.data };
     } catch (axiosError) {

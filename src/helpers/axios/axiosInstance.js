@@ -74,13 +74,12 @@ instance.defaults.timeout = 60000;
 // Add a request interceptor
 instance.interceptors.request.use(
   function (config) {
-    const accessToken = Cookies.get(authKey)
-    //  console.log(accessToken)
-   
+    const accessToken = Cookies.get(authKey);
     if (accessToken) {
-      config.headers.Authorization = accessToken
-    } 
-      
+      config.cookies = {
+        accessToken: accessToken
+      };
+    }
     return config;
   },
   function (error) {
