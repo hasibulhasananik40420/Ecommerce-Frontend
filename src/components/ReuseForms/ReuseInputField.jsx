@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material"
 import { Controller, useFormContext } from "react-hook-form"
 
-const ReuseInputField = ({name,label,type,size,fullWidth}) => {
+const ReuseInputField = ({name,label,type,size,fullWidth,sx}) => {
      const {control} = useFormContext()
   return (
     <Controller
@@ -15,6 +15,8 @@ const ReuseInputField = ({name,label,type,size,fullWidth}) => {
         size={size}
         variant="outlined"
         fullWidth={fullWidth}
+        sx={sx}
+        InputProps={sx && sx.inputProps}
       />
     )}
   />

@@ -17,6 +17,11 @@ export const drawerItems =(role)=>{
             title:'Create Categories',
             path:`${role}/categories`,
             icon:DashboardIcon
+        },
+        {
+            title:'Create Products',
+            path:`${role}/create-products`,
+            icon:DashboardIcon
         }
     
     )
