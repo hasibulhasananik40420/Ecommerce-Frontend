@@ -11,7 +11,7 @@ import Image from "next/image"
 
 const SliderCard = () => {
     const settings = {
-        dots: true,
+    dots: true,
     infinite: true,
     autoplay: true,
     speed: 500,
